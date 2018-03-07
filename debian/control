@@ -1,0 +1,39 @@
+Source: pthsem
+Priority: optional
+Maintainer: Marc Leeman <marc.leeman@gmail.com>
+Build-Depends: debhelper (>= 4.0.0), cdbs
+Standards-Version: 3.6.1
+
+Package: pthsem-dev
+Section: libs
+Architecture: all
+Depends: pthsem (= ${binary:Version})
+Description: pth replacement with semaphore support - development files
+ This package provides GNU Portable Threads enhanced with semaphore
+ support.
+ .
+ Pth is a very portable POSIX/ANSI-C based library for Unix platforms
+ which provides non-preemptive priority-based scheduling for multiple
+ threads of execution (aka ``multithreading'') inside event-driven
+ applications. All threads run in the same address space of the server
+ application, but each thread has it's own individual program-counter,
+ run-time stack, signal mask and errno variable.
+ This package provides the development files of GPU pth enhanced with
+ semaphore support.
+
+Package: pthsem
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: pth replacement with semaphore support
+ This package provides GNU Portable Threads enhanced with semaphore
+ support.
+ .
+ Pth is a very portable POSIX/ANSI-C based library for Unix platforms
+ which provides non-preemptive priority-based scheduling for multiple
+ threads of execution (aka ``multithreading'') inside event-driven
+ applications. All threads run in the same address space of the server
+ application, but each thread has it's own individual program-counter,
+ run-time stack, signal mask and errno variable.
+ This package provides the development files of GPU pth enhanced with
+ semaphore support.
