@@ -8,7 +8,8 @@ Standards-Version: 3.6.1
 Package: pthsem-dev
 Section: libs
 Architecture: any
-Depends: pthsem (= ${binary:Version})
+Depends: ${misc:Depends},
+          pthsem (= ${binary:Version})
 Description: pth replacement with semaphore support - development files
  This package provides GNU Portable Threads enhanced with semaphore
  support.
@@ -25,7 +26,8 @@ Description: pth replacement with semaphore support - development files
 Package: pthsem
 Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${misc:Depends},
+          ${shlibs:Depends}
 Description: pth replacement with semaphore support
  This package provides GNU Portable Threads enhanced with semaphore
  support.
