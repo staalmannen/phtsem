@@ -6,7 +6,7 @@ Standards-Version: 3.6.1
 
 Package: pthsem-dev
 Section: libs
-Architecture: all
+Architecture: any
 Depends: pthsem (= ${binary:Version})
 Description: pth replacement with semaphore support - development files
  This package provides GNU Portable Threads enhanced with semaphore
