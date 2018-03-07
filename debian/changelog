@@ -1,3 +1,11 @@
+pthsem (2.0.8-2~barco9+4) stretch-barco-testing; urgency=medium
+
+  * control: add Section
+  * debian: compat to 10
+  * control: add misc:Depends
+
+ -- Marc Leeman <marc.leeman@barco.com>  Wed, 07 Mar 2018 11:38:25 +0100
+
 pthsem (2.0.8-2~barco9+3) stretch-barco-testing; urgency=medium
 
   * control: dev package is arch any
