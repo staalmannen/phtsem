@@ -180,7 +180,9 @@ intern int pth_mctx_set(
 #elif PTH_MCTX_MTH(sjlj)     &&\
       !PTH_MCTX_DSP(sjljlx)  &&\
       !PTH_MCTX_DSP(sjljisc) &&\
-      !PTH_MCTX_DSP(sjljw32)
+      !PTH_MCTX_DSP(sjljw32) &&\
+	  !PTH_MCTX_DSP(sjljp9) &&\
+	  !PLAN9
 
 /*
  * VARIANT 2: THE SIGNAL STACK TRICK
@@ -532,6 +534,32 @@ pth_mctx_set(pth_mctx_t *mctx, void (*func)(void),
 #endif
     sigemptyset(&mctx->sigs);
     mctx->error = 0;
+    return TRUE;
+}
+
+/*
+ * VARIANT 9: JMP_BUF FIDDLING FOR Plan9/APE
+ * APE has setjmp(2) and longjmp but not sigstack(2) or signalstack(2)
+ * APE also has sigsetjmp and siglongjmp
+* jb is defined as jmp_buf[]
+* info on jmp_buf is (unfortunately) asm and found in
+* /sys/src/ape/lib/ap/$objtype/setjmp.s
+* Thanks to Erik Quanström for help and feedback, even
+* if he thought it a BAD IDEA :)
+*/ 
+#elif PTH_MCTX_MTH(sjlj) && PTH_MCTX_DSP(sjljp9) || PLAN9
+#include <inttypes.h>
+intern int
+pth_mctx_set(pth_mctx_t *mctx, void (*func)(void),
+             char *sk_addr_lo, char *sk_addr_hi)
+{
+    pth_mctx_save(mctx);
+    sigemptyset(&mctx->sigs);
+    mctx->error = 0;
+/*    ...start hacking here... */
+    mctx->jb[1] = (int)func; /* equal to "pc" */
+    mctx->jb[0] = (int)sk_addr_hi; /* equal to "sp" */
+/*    mctx->jb[1] = (int)sk_addr_lo; */ /* equal to what? */
     return TRUE;
 }
 
