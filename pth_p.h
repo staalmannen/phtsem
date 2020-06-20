@@ -345,13 +345,19 @@ struct pth_cleanup_st {
     void *arg;
 };
 
-#line 31 "pth_time.c"
-#define PTH_TIME_NOW  (pth_time_t *)(0)
+
+#line 38 "pth_time.c"
+typedef struct {
+  long t_sec;
+  long t_usec;
+} pth_itime_t;
+#line 43 "pth_time.c"
+#define PTH_TIME_NOW  (pth_itime_t *)(0)
 #define PTH_TIME_ZERO &pth_time_zero
 #define PTH_TIME(sec,usec) { sec, usec }
 #define pth_time_equal(t1,t2) \
-        (((t1).tv_sec == (t2).tv_sec) && ((t1).tv_usec == (t2).tv_usec))
-#line 57 "pth_time.c"
+        (((t1).t_sec == (t2).t_sec) && ((t1).t_usec == (t2).t_usec))
+#line 69 "pth_time.c"
 #if defined(HAVE_GETTIMEOFDAY_ARGS1)
 #define __gettimeofday(t) gettimeofday(t)
 #else
@@ -360,27 +366,28 @@ struct pth_cleanup_st {
 #define pth_time_set(t1,t2) \
     do { \
         if ((t2) == PTH_TIME_NOW) \
-            __gettimeofday((t1)); \
-        else { \
-            (t1)->tv_sec  = (t2)->tv_sec; \
-            (t1)->tv_usec = (t2)->tv_usec; \
+        { \
+            pth_get_int_time((t1)); \
+        } else { \
+            (t1)->t_sec  = (t2)->t_sec; \
+            (t1)->t_usec = (t2)->t_usec; \
         } \
     } while (0)
-#line 109 "pth_time.c"
+#line 253 "pth_time.c"
 #define pth_time_add(t1,t2) \
-    (t1)->tv_sec  += (t2)->tv_sec; \
-    (t1)->tv_usec += (t2)->tv_usec; \
-    if ((t1)->tv_usec > 1000000) { \
-        (t1)->tv_sec  += 1; \
-        (t1)->tv_usec -= 1000000; \
+    (t1)->t_sec  += (t2)->t_sec; \
+    (t1)->t_usec += (t2)->t_usec; \
+    if ((t1)->t_usec > 1000000) { \
+        (t1)->t_sec  += 1; \
+        (t1)->t_usec -= 1000000; \
     }
-#line 120 "pth_time.c"
+#line 264 "pth_time.c"
 #define pth_time_sub(t1,t2) \
-    (t1)->tv_sec  -= (t2)->tv_sec; \
-    (t1)->tv_usec -= (t2)->tv_usec; \
-    if ((t1)->tv_usec < 0) { \
-        (t1)->tv_sec  -= 1; \
-        (t1)->tv_usec += 1000000; \
+    (t1)->t_sec  -= (t2)->t_sec; \
+    (t1)->t_usec -= (t2)->t_usec; \
+    if ((t1)->t_usec < 0) { \
+        (t1)->t_sec  -= 1; \
+        (t1)->t_usec += 1000000; \
     }
 #line 29 "pth_tcb.c"
 
