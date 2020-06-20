@@ -8,8 +8,6 @@ OFILES=pth_attr.$O pth_cancel.$O pth_clean.$O pth_compat.$O pth_data.$O pth_debu
 	pth_sync.$O pth_syscall.$O pth_tcb.$O pth_time.$O pth_uctx.$O pth_util.$O \
 	pth_vers.$O 
 
-HFILES= pth_vers.h pth_p.h pth_acmac.h pth_acdef.h
-	
 </sys/src/cmd/mklib
 
 CC=pcc
@@ -22,7 +20,7 @@ CFLAGS=-c -I. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT
 nuke:V:
 	mk clean
 	rm -f $LIB
-	
+
 
 install:V:
 	mk -f mkfile.pthread $target
