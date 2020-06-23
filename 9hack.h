@@ -4,6 +4,8 @@
 
 #define ECONNRESET ECONNABORTED
 #define PLAN9 1
+#define timeval timespec
+#define tv_usec tv_nsec*1000
 
 
 
