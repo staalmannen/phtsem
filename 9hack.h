@@ -8,7 +8,7 @@ typedef long suseconds_t;
 
 struct timeval {
     struct timespec _timespec;
-    time_t tv_sec = x.tv_sec;
+    time_t tv_sec = _timespec.tv_sec;
     suseseconds_t tv_usec = (suseconds_t) _timespec.tv_nsec * 1000;
 };
 
