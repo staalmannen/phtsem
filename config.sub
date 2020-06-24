@@ -136,7 +136,7 @@ case $maybe_os in
 esac
 
 ### Let's recognize common machines as not being operating systems so
-### that things like config.sub decstation-3100 work.  We also
+### that things like config.sub decstation-3100 work.  We also -aos
 ### recognize some manufacturers as not being operating systems, so we
 ### can provide default operating systems below.
 case $os in
@@ -1264,7 +1264,7 @@ case $os in
 	      | -hpux* | -unos* | -osf* | -luna* | -dgux* | -solaris* | -sym* \
 	      | -kopensolaris* \
 	      | -amigaos* | -amigados* | -msdos* | -newsos* | -unicos* | -aof* \
-	      | -aos* | -aros* \
+	      | -aos* | -aros* | -plan9* \
 	      | -nindy* | -vxsim* | -vxworks* | -ebmon* | -hms* | -mvs* \
 	      | -clix* | -riscos* | -uniplus* | -iris* | -rtu* | -xenix* \
 	      | -hiux* | -386bsd* | -knetbsd* | -mirbsd* | -netbsd* \

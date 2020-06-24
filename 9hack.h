@@ -4,13 +4,11 @@
 
 #define ECONNRESET ECONNABORTED
 #define PLAN9 1
-typedef long suseconds_t;
 
-struct timeval {
-    struct timespec _timespec;
-    time_t tv_sec = _timespec.tv_sec;
-    suseseconds_t tv_usec = (suseconds_t) _timespec.tv_nsec * 1000;
-};
+#include <sys/time.h> //for timeval
+
+#define pth_itime_t timeval
+
 
 
 

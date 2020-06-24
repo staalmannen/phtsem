@@ -55,7 +55,6 @@
 #define PTH_MCTX_DSP_sjljlx  6
 #define PTH_MCTX_DSP_sjljisc 7
 #define PTH_MCTX_DSP_sjljw32 8
-#define PTH_MCTX_DSP_sjljp9  9
 #define PTH_MCTX_STK_mc      1
 #define PTH_MCTX_STK_ss      2
 #define PTH_MCTX_STK_sas     3

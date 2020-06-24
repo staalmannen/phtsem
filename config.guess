@@ -794,6 +794,9 @@ EOF
 		echo ${UNAME_MACHINE}-unknown-freebsd`echo ${UNAME_RELEASE}|sed -e 's/[-(].*//'` ;;
 	esac
 	exit ;;
+	*:plan9*:*)
+	echo ${UNAME_MACHINE-unknown-plan9
+	exit ;;
     i*:CYGWIN*:*)
 	echo ${UNAME_MACHINE}-pc-cygwin
 	exit ;;

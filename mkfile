@@ -8,7 +8,7 @@ OFILES=pth_attr.$O pth_cancel.$O pth_clean.$O pth_compat.$O pth_data.$O pth_debu
 	pth_sync.$O pth_syscall.$O pth_tcb.$O pth_time.$O pth_uctx.$O pth_util.$O \
 	pth_vers.$O 
 
-</sys/src/cmd/mklib
+</sys/src/cmd/mksyslib
 
 CC=pcc
 LD=pcc

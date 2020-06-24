@@ -27,8 +27,6 @@
 #ifndef _PTH_H_
 #define _PTH_H_
 
-#pragma lib "/$M/lib/ape/libpth.a"
-
     /* the library version */
 #ifndef PTH_VERSION_STR
 #define PTH_VERSION_STR "2.0.8"
@@ -45,7 +43,7 @@
 #include <time.h>          /* for struct timespec */
 #include <sys/time.h>      /* for struct timeval  */
 #include <sys/socket.h>    /* for sockaddr        */
-#include <signal.h>    /* for sigset_t        */
+#include <sys/signal.h>    /* for sigset_t        */
 #include <sys/select.h>
 
     /* fallbacks for essential typedefs */
