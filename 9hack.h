@@ -5,9 +5,8 @@
 #define ECONNRESET ECONNABORTED
 #define PLAN9 1
 
-#include <sys/time.h> //for timeval
 
-#define pth_itime_t timeval
+
 
 
 
