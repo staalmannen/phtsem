@@ -20,6 +20,15 @@ CFLAGS=-c -I. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT
 nuke:V:
 	mk clean
 	rm -f $LIB
+	rm -f /sys/man/1/pth-config
+	rm -f /sys/man/3/pth
+	rm -f /sys/man/1/pthread-config
+	rm -f /sys/man/3/pthread
+	rm -f /sys/include/ape/pth.h
+	rm -f /sys/include/ape/pthread.h
+	rm -f /rc/bin/apr/pthread-config
+	rm -f /$objtype/lib/ape/libpth.a
+	rm -f /$objtype/lib/ape/libpthread.a
 
 
 install:V:
